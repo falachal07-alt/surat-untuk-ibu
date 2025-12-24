@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Surat Untuk Ibu</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,500;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Musik Latar -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-memories.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Layar Awal -->
+    <div class="overlay" id="startOverlay">
+        <div class="intro-content">
+            <h1>Untuk Ibu...</h1>
+            <p>Ketuk tombol untuk membuka pesan dari Ananda.</p>
+            <button id="startButton">Buka Surat Penuh Cinta</button>
+        </div>
+    </div>
+
+    <!-- Kontainer Utama -->
+    <div class="main-wrapper" id="mainContainer" style="display: none;">
+        <div class="content-scroller">
+            
+            <!-- Amplop diletakkan agak ke bawah agar saat surat naik tidak mentok atas -->
+            <div class="envelope-wrapper" id="envelopeWrapper">
+                <div class="envelope">
+                    <div class="lid">
+                        <!-- Segel Bunga SVG -->
+                        <svg class="flower-seal" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="18" fill="#ff758c" />
+                            <circle cx="50" cy="20" r="14" fill="#ffb5a7" />
+                            <circle cx="50" cy="80" r="14" fill="#ffb5a7" />
+                            <circle cx="20" cy="50" r="14" fill="#ffb5a7" />
+                            <circle cx="80" cy="50" r="14" fill="#ffb5a7" />
+                            <circle cx="30" cy="30" r="14" fill="#ffb5a7" />
+                            <circle cx="70" cy="70" r="14" fill="#ffb5a7" />
+                            <circle cx="30" cy="70" r="14" fill="#ffb5a7" />
+                            <circle cx="70" cy="30" r="14" fill="#ffb5a7" />
+                        </svg>
+                    </div>
+                    <div class="box"></div>
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-content">
+                                <h2>Surat Untuk Ibu Tercinta</h2>
+                                <div class="message-box">
+                                    <p id="typeMessage"></p>
+                                </div>
+                                <p class="signature">Anakmu yang mencintaimu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hint">Ketuk amplop merah untuk membacanya...</div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-hug" id="hugBtn">Kirim Pelukan Hangat 🤗</button>
+                <button class="btn btn-promise" id="promiseBtn">Janji Kecil Untuk Ibu ✨</button>
+                <div id="promiseText"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

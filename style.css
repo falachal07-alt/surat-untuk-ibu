@@ -1,0 +1,245 @@
+:root {
+    --primary-rose: #ff758c;
+    --deep-rose: #d63384;
+    --soft-gold: #FFE589;
+    --glass: rgba(255, 255, 184, 0.96);
+    --text-main: #4a4e69;
+    --line-color: #D2CC9F;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+/* Overlay Pengantar */
+.overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #fff;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 1s ease;
+    padding: 20px;
+}
+
+.intro-content h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--deep-rose);
+}
+
+#startButton {
+    padding: 15px 40px;
+    background: var(--primary-rose);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 117, 140, 0.3);
+}
+
+/* Wrapper Utama agar bisa scroll jika layar kecil */
+.main-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 40px 0;
+}
+
+.content-scroller {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+}
+
+/* Amplop - Posisi diturunkan agar surat tidak terpotong atas */
+.envelope-wrapper {
+    position: relative;
+    width: 300px;
+    height: 180px;
+    margin-top: 180px; /* Jarak aman dari atas layar */
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #ff8fa3;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.lid {
+    position: absolute;
+    z-index: 4;
+    border-top: 100px solid #ff758c;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    top: 0;
+    transform-origin: top;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flower-seal {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: -30px;
+    z-index: 5;
+    transition: opacity 0.4s, transform 0.4s;
+}
+
+.box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff8fa3;
+    z-index: 2;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Kertas Surat Bergaris */
+.card {
+    position: absolute;
+    top: 5px;
+    left: 5%;
+    width: 90%;
+    height: 160px;
+    background-color: var(--glass);
+    background-image: repeating-linear-gradient(transparent, transparent 27px, var(--line-color) 28px);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    z-index: 1;
+    transition: all 0.8s ease;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.card-inner {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.card-content h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--deep-rose);
+    font-size: 1.4rem;
+    margin: 0 0 15px 0;
+    line-height: 28px;
+    text-align: center;
+}
+
+.message-box {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    line-height: 28px;
+    color: #333;
+    width: 100%;
+}
+
+.signature {
+    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    margin-top: 28px;
+    width: 100%;
+}
+
+/* Animasi Buka Surat */
+.active .lid { transform: rotateX(180deg); z-index: 0; }
+.active .flower-seal { opacity: 0; transform: scale(0.5); }
+.active .card {
+    transform: translateY(-200px); /* Ketinggian disesuaikan */
+    height: 420px;
+    z-index: 5;
+}
+
+/* Tombol Interaksi - Diposisikan di bawah amplop */
+.action-buttons {
+    width: 100%;
+    margin-top: 60px;
+    opacity: 0;
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.envelope-wrapper.active + .action-buttons { opacity: 1; }
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    width: 80%;
+    max-width: 260px;
+}
+
+.btn-hug { background: var(--primary-rose); color: white; }
+.btn-promise { background: var(--soft-gold); color: #5a4b12; }
+
+#promiseText {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+    text-align: center;
+    width: 80%;
+}
+
+.hint { margin-top: 20px; color: white; animation: bounce 2s infinite; font-size: 0.85rem; }
+
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.floating { position: fixed; pointer-events: none; z-index: 999; }
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--glass);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
